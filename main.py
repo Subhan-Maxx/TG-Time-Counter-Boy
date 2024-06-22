@@ -33,15 +33,15 @@ async def counts(bot, update):
                    message_id = 7,
                    parse_mode = enums.ParseMode.HTML
              )
-            await time.sleep(2)
-            utext = f"Last Time Updated! {formatted_datetime}"
-            await bot.edit_message_text(
+             time.sleep(2)
+             utext = f"Last Time Updated! {formatted_datetime}"
+             await bot.edit_message_text(
                    chat_id = -1001951908326,
                    text = utext,
                    message_id = 12,
                    parse_mode = enums.ParseMode.HTML
-           )
-             #await update.reply(f"Last Time Updated! {formatted_datetime}")
+             )            
+            #await update.reply(f"Last Time Updated! {formatted_datetime}")
         except Exception as e:
             print(str(e))
             await update.reply(str(e))
