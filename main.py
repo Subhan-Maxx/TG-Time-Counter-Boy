@@ -16,7 +16,7 @@ counter = Client(
 async def counts(bot, update):
     await update.reply('Bot is Running!')
 
-@counter.on_message(filters.command('start_count') & filters.user(admin_id)) 
+@counter.on_message(filters.chat(-10000) & (filters.photo))
 async def counts(bot, update):
     try:        
         y, m, d, h, mi = get_data()
