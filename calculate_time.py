@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def calculate_age(birth_date, birth_time):
+def get_data(birth_date, birth_time):
     current_datetime = datetime.now()
     birth_datetime = datetime.combine(birth_date, birth_time)
     
