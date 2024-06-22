@@ -9,7 +9,7 @@ counter = Client(
     name='Time-Counter',
     api_id=24871620,
     api_hash='e4195bedc71234a179a3d9ac0cad6401',
-    bot_token= bot_token
+    bot_token= "7106861798:AAEG1AhY5GLmT0N2NGM8w7AYysBH3b9sWsM"
 ) 
 
 @counter.on_message(filters.command('start'))
