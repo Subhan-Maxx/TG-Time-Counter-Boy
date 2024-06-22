@@ -19,6 +19,8 @@ async def counts(bot, update):
 
 @counter.on_message(filters.chat(-1002223570290) & (filters.photo))
 async def counts(bot, update):
+    current_datetime = datetime.now()
+    formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
     try:        
         dob = datetime(2024, 6, 22)
         birth_time = datetime.strptime("15:15", "%H:%M").time()
@@ -31,7 +33,7 @@ async def counts(bot, update):
                    message_id = 7,
                    parse_mode = enums.ParseMode.HTML
              )
-             await update.reply("Updated")
+             await update.reply("successfully Uploaded!", formatted_datetime)
         except Exception as e:
             print(str(e))
             await update.reply(str(e))
