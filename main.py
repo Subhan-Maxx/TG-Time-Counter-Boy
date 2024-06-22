@@ -1,5 +1,6 @@
 from pyrogram import Client, filters, enums
 from os import environ
+from datetime import datetime
 from calculate_time import get_data
 import time
 
@@ -19,15 +20,18 @@ async def counts(bot, update):
 @counter.on_message(filters.chat(-1002223570290) & (filters.photo))
 async def counts(bot, update):
     try:        
-        y, m, d, h, mi = get_data()
+        dob = datetime(2024, 6, 22)
+        birth_time = datetime.strptime("15:15", "%H:%M").time()
+        y, m, d, h, mi = get_data(dob, birth_time)
         try:
-             text = f"<b>Since 3 September 2023</b>\n\n<b>Total Years:</b> {y}\n<b>Total Months:</b> {m}\n<b>Total Days:</b> {d}\n<b>Total Hours:</b> {h}\n<b>Total Minutes:</b> {mi}"
+             text = f"<b>Since 22 Jun 2024</b>\n\n<b>Total Years:</b> {y}\n<b>Total Months:</b> {m}\n<b>Total Days:</b> {d}\n<b>Total Hours:</b> {h}\n<b>Total Minutes:</b> {mi}"
              await bot.edit_message_text(
                    chat_id = -1001951908326,
                    text = text,
                    message_id = 7,
                    parse_mode = enums.ParseMode.HTML
              )
+             await update.reply("Updated")
         except Exception as e:
             print(str(e))
             await update.reply(str(e))
