@@ -19,11 +19,11 @@ def get_data():
     cur_hour = int(current_datetime.hour)
     cur_minute = int(current_datetime.minute)
      # Default         
-    start_year = 2023    
-    start_month = 9
-    start_day = 25
-    start_hour = 14
-    start_minute = 41 
+    start_year = 2024  
+    start_month = 6
+    start_day = 22
+    start_hour = 19
+    start_minute = 9 
 
     # Set To 0
     total_years = 0
