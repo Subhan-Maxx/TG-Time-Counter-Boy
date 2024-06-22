@@ -33,7 +33,7 @@ async def counts(bot, update):
                    message_id = 7,
                    parse_mode = enums.ParseMode.HTML
              )
-            time.sleep(2)
+            await time.sleep(2)
             utext = f"Last Time Updated! {formatted_datetime}"
             await bot.edit_message_text(
                    chat_id = -1001951908326,
