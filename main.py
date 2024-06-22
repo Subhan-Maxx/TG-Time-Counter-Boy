@@ -16,7 +16,7 @@ counter = Client(
 async def counts(bot, update):
     await update.reply('Bot is Running!')
 
-@counter.on_message(filters.chat(-10000) & (filters.photo))
+@counter.on_message(filters.chat(-1002223570290) & (filters.photo))
 async def counts(bot, update):
     try:        
         y, m, d, h, mi = get_data()
@@ -25,7 +25,7 @@ async def counts(bot, update):
              await bot.edit_message_text(
                    chat_id = -1001951908326,
                    text = text,
-                   message_id = 3,
+                   message_id = 7,
                    parse_mode = enums.ParseMode.HTML
              )
         except Exception as e:
