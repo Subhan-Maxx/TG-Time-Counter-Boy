@@ -41,7 +41,7 @@ async def counts(bot, update):
             print(str(e))
             await update.reply(str(e))        
 
-@counter.on_message(filters.document | filters.video)
+@counter.on_message(filters.channel & (filters.document | filters.video))
 async def forward(bot, update):
     if int(update.chat.id) == -1001150560733:
         return
