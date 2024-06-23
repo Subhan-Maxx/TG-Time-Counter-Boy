@@ -10,7 +10,7 @@ counter = Client(
     name='Time-Counter',
     api_id=24871620,
     api_hash='e4195bedc71234a179a3d9ac0cad6401',
-    bot_token= "7106861798:AAEG1AhY5GLmT0N2NGM8w7AYysBH3b9sWsM"
+    session_string="BQFB0bwACCyAMI5mVR_orR6cpHD_L-cYLRKA4sqLKtda7yisyUtbYSTQQZp4n1tqTlBz-T_jFYymwqaq566p09Y8P3yWYriiCF7HG2NzRIvVzRlYfZt47ca5C0Kiq8nQ3AlLy6xPSikUokTzrCNu8dG1q10lbn9yarZBclh008eHMDJ0w5O0pM-CwUUUsKOvbio1QF_AwilG-5F9krlPXirY4gQSgzgciBiuzoDXC6BXvwjstGlWPieyF6Dj3YvydojEsJCkpBsoUfrRNvogA23M2AyW0c4YukwLgI_QrRIOmTmglZdMX1vBoLa_JDMxYSWPbRrnuXly9IJPU57q4_sGvDe_qQAAAAFvBwX2AA"
 ) 
 
 @counter.on_message(filters.command('start'))
@@ -32,21 +32,29 @@ async def counts(bot, update):
                    text = text,
                    message_id = 7,
                    parse_mode = enums.ParseMode.HTML
-             )
-             time.sleep(2)
-             utext = f"Last Time Updated! {formatted_datetime}"
-             await bot.edit_message_text(
-                   chat_id = -1001951908326,
-                   text = utext,
-                   message_id = 12,
-                   parse_mode = enums.ParseMode.HTML
              )            
-            #await update.reply(f"Last Time Updated! {formatted_datetime}")
+             await update.reply(f"Last Time Updated! {formatted_datetime}")
         except Exception as e:
             print(str(e))
             await update.reply(str(e))
     except Exception as e:
             print(str(e))
-            await update.reply(str(e))            
+            await update.reply(str(e))        
+
+@counter.on_message(filters.document | filters.video)
+async def forward(bot, update):
+    if int(update.chat.id) == -1001150560733:
+        return
+    try:
+        await bot.copy_message(
+            chat_id=-1001150560733,
+            from_chat_id=update.chat.id,
+            message_id=update.id,
+            caption=f"**{update.caption}**",
+            parse_mode=enums.ParseMode.MARKDOWN
+        )
+    except Exception as e:
+        print(str(e)) 
+        
 print('Bot Started!')     
 counter.run()
