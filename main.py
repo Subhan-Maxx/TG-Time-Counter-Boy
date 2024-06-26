@@ -22,8 +22,8 @@ async def counts(bot, update):
     current_datetime = datetime.now()
     formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
     try:        
-        dob = datetime(2024, 6, 22)
-        birth_time = datetime.strptime("15:15", "%H:%M").time()
+        dob = datetime(2024, 6, 26)
+        birth_time = datetime.strptime("16:45", "%H:%M").time()
         y, m, d, h, mi = get_data(dob, birth_time)
         try:
              text = f"<b>Since 22 Jun 2024</b>\n\n<b>Total Years:</b> {y}\n<b>Total Months:</b> {m}\n<b>Total Days:</b> {d}\n<b>Total Hours:</b> {h}\n<b>Total Minutes:</b> {mi}"
