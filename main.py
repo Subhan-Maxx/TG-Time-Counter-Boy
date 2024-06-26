@@ -3,6 +3,7 @@ from os import environ
 from datetime import datetime
 from calculate_time import get_data
 import time
+import pytz
 
 bot_token = environ.get('BOT_TOKEN')
 
@@ -19,14 +20,15 @@ async def counts(bot, update):
 
 @counter.on_message(filters.chat(-1002223570290) & (filters.photo))
 async def counts(bot, update):
-    current_datetime = datetime.now()
-    formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    timezone = pytz.timezone("Asia/Kolkata")
+    current_datetime = datetime.now(timezone)
+    formatted_datetime = current_datetime.strftime("%d %b %Y, %H:%M")
     try:        
         dob = datetime(2024, 6, 26)
-        birth_time = datetime.strptime("16:45", "%H:%M").time()
+        birth_time = datetime.strptime("17:24", "%H:%M").time()
         y, m, d, h, mi = get_data(dob, birth_time)
         try:
-             text = f"<b>Since 22 Jun 2024</b>\n\n<b>Total Years:</b> {y}\n<b>Total Months:</b> {m}\n<b>Total Days:</b> {d}\n<b>Total Hours:</b> {h}\n<b>Total Minutes:</b> {mi}"
+             text = f"<b>Since 26 Jun 2024</b>\n\n<b>Total Years:</b> {y}\n<b>Total Months:</b> {m}\n<b>Total Days:</b> {d}\n<b>Total Hours:</b> {h}\n<b>Total Minutes:</b> {mi}"
              await bot.edit_message_text(
                    chat_id = -1001951908326,
                    text = text,
